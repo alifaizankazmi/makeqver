@@ -1,25 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { teal } from '@material-ui/core/colors';
+
+import AppHeader from './AppHeader';
+import CodeBin from './CodeBin';
+import FormatSettings from './FormatSettings';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#000000'
+    },
+    secondary: {
+      main: teal[200]
+    }
+  },
+  typography: {
+    fontFamily: [
+      'Consolas'
+    ]
+  }
+});
+
+const useStyles = makeStyles(() => ({
+  root: {
+    display: 'inline'
+  }
+}));
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className={classes.root}>
+        <AppHeader />
+        <FormatSettings />
+        <CodeBin />
+      </div>
+    </ThemeProvider>
   );
 }
 
