@@ -35,7 +35,6 @@ export default function CodeBin() {
 
     const onCodeToFormatChanged = newCode => {
         setCodeToFormat(newCode);
-        // formatCode(newCode);
         formatCode(parser.parse(newCode));
     }
 
